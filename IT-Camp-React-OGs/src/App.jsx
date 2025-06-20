@@ -2,16 +2,19 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import SecondPage from './pages/SecondPage';
 import Layout from './layout/Layout';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
           <Route path="/second" element={<SecondPage />} />
-        </Routes>
-      </Layout>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
