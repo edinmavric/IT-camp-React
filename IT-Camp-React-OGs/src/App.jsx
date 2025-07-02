@@ -1,22 +1,19 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import SecondPage from './pages/SecondPage';
-import Layout from './layout/Layout';
-import LoginPage from './pages/LoginPage';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Students from './pages/Students';
+import Courses from './pages/Courses';
+import About from './pages/About';
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/second" element={<SecondPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="students" element={<Students />} />
+        <Route path="courses" element={<Courses />} />
+        <Route path="about" element={<About />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
