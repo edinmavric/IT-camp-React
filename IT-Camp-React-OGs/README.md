@@ -1,14 +1,17 @@
-1. Napraviti To-Do listu koja ima input za unos stavke
-i dugme za dodavanje stavke i ima listu dodatih stavki.
+1:
+Napravi komponentu koja:
 
-Pokusati da se napravi logika za kliknute brisanje stavke.
+Ima polje za unos zadatka
+Ima dva dugmeta: “Dodaj važan” i “Dodaj običan”
+Svaka stavka ima tekst i tip (“važan” ili “običan”)
+Prikazuje stavke, važne stavke crvenom bojom
+Stavke mogu da se klikom obeleže kao završene (promena boje i/ili slova).
 
----
+-----
 
-2. Napraviti formu za registraciju koja ima polja za ime,
-prezime, email i lozinku.
+2:
+Napravi komponentu:
 
-U kartici ispod napraviti prikaz svih podataka u trenutku 
-ispisivanja istih.
-
-Napraviti dugme koje brise sve iz svih polja.
+Polje za email
+Validacija da li sadrži “@”
+Ako nije validno: Email nije validan! u crvenoj boji
