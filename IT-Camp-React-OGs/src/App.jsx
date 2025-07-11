@@ -1,124 +1,196 @@
 import { useState } from 'react';
 
 const App = () => {
-  // 2. ---
-  const [users, setUsers] = useState([]);
-  const [name, setName] = useState('');
+  const questions = [
+    {
+      text: 'Koja linija je optimalna za onChange handler ako već imaš funkciju handleChange(e)?',
+      answers: [
+        'a) onChange={e => handleChange(e)}',
+        'b) onChange={handleChange}',
+        'c) onChange={() => handleChange()}',
+        'd) onChange= {e => { handleChange(e); }}',
+      ],
+      correct: [1],
+      showType: 'highlight',
+    },
+    {
+      text: 'Šta se dešava ako koristiš let umesto useState u komponenti?',
+      answers: [
+        'a) Sve radi kao i sa useState',
+        'b) let vrednost se pamti između rendera',
+        'c) Vrednost se resetuje pri svakom renderu',
+        'd) Komponenta se automatski ne osvežava',
+      ],
+      correct: [2, 3],
+      showType: 'modal',
+    },
+    {
+      text: 'Kako pravilno dodajemo novi objekat u niz stanja u Reactu?',
+      answers: [
+        'a) setUsers(users.push(noviUser))',
+        'b) setUsers([...users, noviUser])',
+        'c) users.push(noviUser); setUsers(users)',
+        'd) setUsers(users.concat(noviUser))',
+      ],
+      correct: [1, 3],
+      showType: 'expand',
+    },
+    {
+      text: 'Koji je ispravan način da obrišemo korisnika iz niza users?',
+      answers: [
+        'a) users.pop()',
+        'b) users.splice(id, 1)',
+        'c) setUsers(users.filter(user => user.id !== id))',
+        'd) delete users[id]',
+      ],
+      correct: [2],
+      showType: 'highlight',
+    },
+    {
+      text: 'Kako najefikasnije prebacujemo boolean stanje true ⇄ false?',
+      answers: [
+        'a) setPrikazi(!prikazi)',
+        'b) setPrikazi(true)',
+        'c) setPrikazi(prev => !prev)',
+        'd) prikazi = !prikazi',
+      ],
+      correct: [2],
+      showType: 'expand',
+    },
+  ];
 
-  const handleAddUser = userType => {
-    if (name.trim()) {
-      const newUser = { id: Date.now(), name: name.trim(), type: userType };
-      setUsers(prevUsers => [newUser, ...prevUsers]);
-      setName('');
-    }
+  const [shown, setShown] = useState(Array(questions.length).fill(false));
+  const [modalIdx, setModalIdx] = useState(null);
+
+  const styles = {
+    highlight: {
+      background: '#d1ffd6',
+      fontWeight: 'bold',
+      borderRadius: '4px',
+      padding: '2px 6px',
+    },
+    wrong: {
+      background: '#ffd6d6',
+      color: '#b30000',
+      fontWeight: 'bold',
+      borderRadius: '4px',
+      padding: '2px 6px',
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      background: 'rgba(0,0,0,0.3)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1000,
+    },
+    modal: {
+      background: '#fff',
+      padding: '2rem',
+      borderRadius: '8px',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.2)',
+      minWidth: '300px',
+      textAlign: 'center',
+    },
+    expand: {
+      marginTop: '0.5rem',
+      background: '#f0f0f0',
+      borderRadius: '4px',
+      padding: '0.5rem 1rem',
+      display: 'inline-block',
+    },
+    showBtn: {
+      marginLeft: '1rem',
+      marginTop: '0.5rem',
+      cursor: 'pointer',
+    },
   };
 
-  const handleRemoveUser = id => {
-    setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
-  };
-  // --- .2
-  // 1. ---
-  // const [ime, setIme] = useState('');
-  // const [prezime, setPrezime] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [sifra, setSifra] = useState('');
+  //   Napraviti React aplikaciju koja ima sledeće funkcionalnosti:
 
-  // const handleDelete = () => {
-  //   setIme('');
-  //   setPrezime('');
-  //   setEmail('');
-  //   setSifra('');
-  // };
-  // --- .1
+  //  Deo 1: Unos korisnika
+  // input za ime
+  // radio dugmići za izbor: user ili admin
+  // dugme “Dodaj korisnika”
+  // nakon dodavanja, ime iz inputa se briše
 
-  // Imati Boolean state, na klik dugmeta napraviti toggle, prikazi
-  // i sakrij karticu
-  // const [prikazi, setPrikazi] = useState(false);
+  //  Deo 2: Lista korisnika
+  // prikaz svih dodatih korisnika u listi
+  // admin korisnici su podebljani
+  // svaki korisnik ima dugme "Obriši"
+  // koristi id sa Date.now() za unikatnost
+
+  //  Deo 3: Uslovno prikazivanje
+  // dugme “Prikaži/Sakrij korisnike”
+  // koristi useState boolean za prikaz
+
+  //  Bonus izazov:
+  // Dodati opciju “Obriši sve korisnike”.
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Unesite Ime korisnika"
-        value={name}
-        onChange={e => setName(e.target.value)}
-      />
-      <button onClick={() => handleAddUser('user')}>Dodaj korisnika</button>
-      <button onClick={() => handleAddUser('admin')}>Dodaj admina</button>
-
-      <ul>
-        {users.map((user, index) => (
-          <li key={user.id * index}>
-            {user.type === 'admin' ? (
-              <strong>
-                {user.name} - ({user.type})
-              </strong>
-            ) : (
-              <span>
-                {user.name} - ({user.type})
-              </span>
-            )}{' '}
-            <button onClick={() => handleRemoveUser(user.id)}>
-              Obrisi Korisnika
-            </button>
-          </li>
-        ))}
-      </ul>
+      <h2>React pitanja</h2>
+      {questions.map((q, idx) => (
+        <div key={idx} style={{ marginBottom: '2rem' }}>
+          <div style={{ fontWeight: 500 }}>{`Pitanje ${idx + 1}: ${
+            q.text
+          }`}</div>
+          <ul style={{ marginTop: '0.5rem' }}>
+            {q.answers.map((a, i) => {
+              if (shown[idx]) {
+                if (q.correct.includes(i)) {
+                  return (
+                    <li key={i} style={styles.highlight}>
+                      {a}
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li key={i} style={styles.wrong}>
+                      {a}
+                    </li>
+                  );
+                }
+              }
+              return <li key={i}>{a}</li>;
+            })}
+          </ul>
+          <button
+            style={styles.showBtn}
+            onClick={() => {
+              if (q.showType === 'modal') setModalIdx(idx);
+              else setShown(s => s.map((v, i) => (i === idx ? true : v)));
+            }}
+          >
+            Prikaži odgovor
+          </button>
+          {q.showType === 'expand' && shown[idx] && (
+            <div style={styles.expand}>
+              <strong>Tačan odgovor:</strong> <br />
+              {q.correct.map(i => q.answers[i]).join(' / ')}
+            </div>
+          )}
+        </div>
+      ))}
+      {modalIdx !== null && (
+        <div style={styles.modalOverlay} onClick={() => setModalIdx(null)}>
+          <div style={styles.modal} onClick={e => e.stopPropagation()}>
+            <h3>Tačan odgovor</h3>
+            <div style={{ margin: '1rem 0' }}>
+              {questions[modalIdx].correct
+                .map(i => questions[modalIdx].answers[i])
+                .join(' / ')}
+            </div>
+            <button onClick={() => setModalIdx(null)}>Zatvori</button>
+          </div>
+        </div>
+      )}
     </div>
-    //  <button onClick={() => setPrikazi(prev => !prev)}>
-    //   {prikazi ? 'Sakrij' : 'Prikazi'} detalje
-    // </button>
-    // {prikazi && (
-    //   <div style={{ marginTop: '12px', border: '1px solid grey' }}>
-    //     Neki detalji prikazani
-    //   </div>
   );
-  {
-    /* 1. <form>
-    <input
-      type="text"
-      placeholder="Ime"
-      value={ime}
-      onChange={e => setIme(e.target.value)}
-    />
-    <input
-      type="text"
-      placeholder="Prezime"
-      value={prezime}
-      onChange={e => setPrezime(e.target.value)}
-    />
-    <input
-      type="email"
-      placeholder="Email"
-      value={email}
-      onChange={e => setEmail(e.target.value)}
-    />
-    <input
-      type="password"
-      placeholder="Sifra"
-      value={sifra}
-      onChange={e => setSifra(e.target.value)}
-    />
-
-    <button onClick={handleDelete}>Izbrisi</button>
-  </form>
-
-  <div style={{ border: '1px solid gray', padding: '12px' }}>
-    <h3>Uneti podaci:</h3>
-    <p>
-      <strong>Ime:</strong> {ime}
-    </p>
-    <p>
-      <strong>Prezime:</strong> {prezime}
-    </p>
-    <p>
-      <strong>Email:</strong> {email}
-    </p>
-    <p>
-      <strong>Sifra:</strong> {sifra}
-    </p>
-  </div> */
-  }
 };
 
 export default App;
