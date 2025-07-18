@@ -1,3 +1,5 @@
+Zavrsiti ove zadatke i takodje odraditi jos vezbi sa useState i useEffect hook-ovima.
+
 - 1: Prikaz jednog posta na osnovu ID-ja
   Napraviti komponentu koja prikazuje jedan post na osnovu ID-ja unetog u input polje.
 
