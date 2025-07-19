@@ -1,15 +1,30 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ProfilesPage from './pages/ProfilesPage';
-import SingleProfilePage from './pages/SingleProfilePage';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users/1')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+      });
+  }, [count]);
+
+  const increment = () => {
+    setCount(prevCount => prevCount + 1);
+  };
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<ProfilesPage />} />
-        <Route path="/:id" element={<SingleProfilePage />} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <button onClick={increment}>Increment</button>
+      <p>Check the console for fetched data.</p>
+    </div>
   );
 }
 
