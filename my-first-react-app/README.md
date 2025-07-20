@@ -1,33 +1,19 @@
-Zadatak 1 – To-do aplikacija (osnovna)
-Napraviti To-do aplikaciju koja ima sledeće funkcionalnosti:
+- Početna stranica /
+  Prikaži listu svih korisnika (link: /users)
+  Ime svakog korisnika vodi na njegovu profil stranicu: /users/:userId
 
-Unos novog zadatka (tekstualni input)
-Prikaz liste zadataka ispod inputa
-Brisanje zadatka klikom na dugme „Obriši”
-Dodati filter:
-Prikaži sve
-Prikaži samo završene
-Prikaži samo nezavršene
-Pomoć: svaki zadatak može da bude objekat sa id, tekst i završeno (true/false)
-{
-id: 1,
-tekst: 'Uraditi domaći',
-zavrseno: false
-}
+- Stranica profila korisnika /users/:userId
+  Dohvati i prikaži detalje o korisniku: ime, email, kompanija itd.
+  Ispod toga prikaži sve postove tog korisnika – naslov i kratak pregled
+  Svaki post vodi na stranicu sa detaljima posta: /posts/:postId
 
-Zadatak 2 – Preuzimanje i prikaz korisnika sa API-ja
-Napraviti komponentu koja:
+- Stranica detalja posta /posts/:postId
+  Prikaži naslov i telo posta
+  Dohvati i prikaži sve komentare za taj post
+  (API: /comments?postId=...)
 
-Pri učitavanju stranice (mount) preuzima korisnike sa API-ja:
-https://jsonplaceholder.typicode.com/users
-Prikazuje imena korisnika u listi
-Dodaje loading poruku dok se podaci preuzimaju
-Ako dođe do greške, prikaži poruku o grešci
-Pomoć: koristi useEffect za fetch i useState za korisnike, loading i grešku.
-
-Zadatak 3 – Razumevanje useState i useEffect
-
-Šta je useState, čemu služi, zašto ne možemo koristiti obične promenljive
-Šta je useEffect, čemu služi, kada se izvršava i kako se koristi sa zavisnostima (dependencies)
-Zašto ne bismo mogli da preuzimamo podatke bez useEffect-a
-Kada se koristi useEffect, a kada samo useState
+- API krajnje tačke (endpoints):
+  Korisnici: https://jsonplaceholder.typicode.com/users
+  Postovi korisnika: https://jsonplaceholder.typicode.com/posts?userId={id}
+  Post po ID-u: https://jsonplaceholder.typicode.com/posts/{id}
+  Komentari za post: https://jsonplaceholder.typicode.com/comments?postId={id}
