@@ -1,30 +1,15 @@
-import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Users from './pages/Users';
+import User from './pages/User';
+import Post from './pages/Post';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users/1')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-      });
-  }, [count]);
-
-  const increment = () => {
-    setCount(prevCount => prevCount + 1);
-  };
-
   return (
-    <div>
-      <button onClick={increment}>Increment</button>
-      <p>Check the console for fetched data.</p>
-    </div>
+    <Routes>
+      <Route path="/" element={<Users />} />
+      <Route path="/users/:userId" element={<User />} />
+      <Route path="/posts/:postId" element={<Post />} />
+    </Routes>
   );
 }
 
