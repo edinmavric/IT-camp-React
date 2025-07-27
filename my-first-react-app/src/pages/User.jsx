@@ -16,21 +16,23 @@ const User = () => {
       .then(response => response.json())
       .then(data => setPosts(data))
       .catch(error => console.error('Error fetching posts:', error));
-  }, [userId]);
+  }, []);
 
-  return <div>
-    <h1>{user ? user.name : 'Loading...'}</h1>
-    <p>Email: {user ? user.email : 'Loading...'}</p>
-    <h2>Posts</h2>
+  return (
     <div>
-      {posts.map(post => (
-        <Link to={`/posts/${post.id}`} key={post.id}>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
-        </Link>
-      ))}
+      <h1>{user ? user.name : 'Loading...'}</h1>
+      <p>Email: {user ? user.email : 'Loading...'}</p>
+      <h2>Posts</h2>
+      <div>
+        {posts.map(post => (
+          <div key={post.id}>
+            <Link to={`/posts/${post.id}`}>{post.title}</Link>
+          </div>
+        ))}
+      </div>
+      <Link to="/">Back to Users</Link>
     </div>
-  </div>;
+  );
 };
 
 export default User;
