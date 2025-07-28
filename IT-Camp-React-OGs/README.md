@@ -1,80 +1,217 @@
-- Zadatk 1:
-Napraviti aplikaciju koja omogućava korisniku da promeni jezik interfejsa (npr. en ili sr) koristeći React createContext i useContext.
+Domaci:
 
-Zahtevi:
-Napraviti LanguageContext koji sadrži:
-trenutni jezik (language)
-funkciju za promenu jezika (setLanguage)
-Obezbediti LanguageProvider komponentu koja će biti obavijač oko celog App-a i omogućiti pristup kontekstu.
+Početna stranica /
 
-Napraviti sledeće komponente:
-Navbar: prikazuje poruku "Trenutni jezik: en/sr" i dugmad za promenu jezika (EN, SR)
-HomePage: prikazuje poruku na jeziku koji je trenutno aktivan
-Ako je en: "Welcome!"
-Ako je sr: "Dobrodošli!"
-Prilikom promene jezika iz Navbar-a, tekst u HomePage komponenti se automatski ažurira.
+Prikaži listu svih korisnika (link: /users)
 
-- Zadatak 2:
-1. Početna stranica (Home)
-Prikazuje listu postova (naslov + dugme „Detalji”)
-Klikom na „Detalji” otvara se stranica sa prikazom detalja posta
-Postovi se učitavaju pomoću useEffect (simulacija fetchovanja)
-Klik na „Detalji” postavlja trenutni post u kontekst (nema useParams)
+Ime svakog korisnika vodi na njegovu profil stranicu: /users/:userId
 
-2. Detalji posta (Post Details)
-Prikazuje naslov i sadržaj trenutno selektovanog posta iz PostContext
-Ako nije izabran nijedan post, prikazuje poruku: “Nema odabranog posta”
+---
 
-3. Dodavanje novog posta (New Post)
-Forma sa dva inputa: title i content
-Prikaz unetog posta putem alert-a ili u konzoli
-Bonus: dodati ga u listu postova (ako žele da vežbaju dalje)
+Stranica profila korisnika /users/:userId
 
-4. Profil korisnika (Profile)
-Prikazuje korisničko ime i email (iz UserContext)
-Omogućava promenu imena (input + dugme za čuvanje)
+Dohvati i prikaži detalje o korisniku: ime, email, kompanija itd.
 
-Upustvo:
-1. Kreirati UserContext:
-Čuvati korisnika: { name: 'Ana', email: 'ana@email.com' }
-Omogućiti menjanje imena kroz setUser
+Ispod toga prikaži sve postove tog korisnika – naslov i kratak pregled
 
-2. Kreirati PostContext:
-Čuvati trenutno selektovani post: { id, title, content }
-Funkcija setSelectedPost(post) se poziva iz Home komponente
+Svaki post vodi na stranicu sa detaljima posta: /posts/:postId
 
-3. Rute:
-Koristiti BrowserRouter i definisati sledeće rute:
-<Route path="/" element={<Home />} />
-<Route path="/post" element={<PostDetails />} />
-<Route path="/new" element={<NewPost />} />
-<Route path="/profile" element={<Profile />} />
+---
 
-Lista komponenti:
-Navbar.js
-- Navigacija sa linkovima:
-- Početna
-- Novi post
-- Profil
+Stranica detalja posta /posts/:postId
 
-Home.js
-- useEffect za simulaciju fetchovanja postova
-- Lista postova + dugme „Detalji“
-- Klik na „Detalji” → setSelectedPost(post) + navigacija na /post
+Prikaži naslov i telo posta
 
-PostDetails.js
-- Prikaz podataka iz selectedPost (kroz useContext)
-- Ako nema posta, prikazati: "Nema odabranog posta"
+Dohvati i prikaži sve komentare za taj post (API: /comments?postId=...)
 
-NewPost.js
-- Forma sa dva inputa (naslov + sadržaj)
-- Prikaz unetih podataka kroz alert() ili console.log()
+---
 
-Profile.js
-- Prikaz korisničkog imena i email-a
-- Omogućena promena imena
+API krajnje tačke (endpoints):
 
-Bonus izazovi (opciono):
-1. Dodajte localStorage za korisnika da se ime pamti pri refreshu
-2. Omogućite dodavanje novog posta u Home.js (kao dodatnu funkcionalnost)
-3. Dodajte context za temu (light/dark) i omogućite promenu teme u Navbar.js
+Korisnici: https://jsonplaceholder.typicode.com/users
+
+Postovi korisnika: https://jsonplaceholder.typicode.com/posts?userId={id}
+
+Post po ID-u: https://jsonplaceholder.typicode.com/posts/{id}
+
+Komentari za post: https://jsonplaceholder.typicode.com/comments?postId={id}
+
+---
+
+**PROJEKTI**:
+
+Svi projekti ce imati autentikaciju sa localStorage-om ili sessionStorage-om (Zavisi od vrste projekta).
+
+Svi projekti ce imati osnovnu strukturu sa navigacijom i stranicama koje su navedene ispod i dodatne stranice (po izboru).
+
+Svi projekti ce pratiti najbolje prakse, kao u pisanju koda, tako i u organizaciji foldera i komponenti, itd...
+
+Krajni rok za zavrsetak je 31. Avgust 2025.
+
+---
+
+1. Benjamin — Aplikacija za učenje jezika
+   Naziv: LanguageLearner
+   Opis: Napravi aplikaciju za učenje jezika. Korisnik može da bira jezik (npr. engleski, nemački, turski), a zatim da vidi lekcije podeljene po temama (pozdravi, brojevi, boje...). Svaka lekcija ima reči i test kviz na kraju.
+   Struktura:
+
+- /languages – lista jezika
+
+- /languages/:languageId – lekcije izabranog jezika
+
+- /languages/:languageId/lessons/:lessonId – detalji lekcije + kviz
+
+- /practice – nasumična vežbanja (mix reči)
+
+- /favorites – omiljene lekcije korisnika
+
+- /profile – korisnikov napredak
+
+---
+
+2. Mustafa — Studentski portal
+   Naziv: StudentConnect
+   Opis: Web aplikacija za upravljanje studentskim životom: raspored predavanja, domaći zadaci, obaveštenja i forum za pitanja.
+   Struktura:
+
+- /schedule – nedeljni raspored
+
+- /homeworks – lista domaćih zadataka
+
+- /homeworks/:homeworkId – detalji domaćeg
+
+- /forum – lista tema na forumu
+
+- /forum/:topicId – poruke u okviru teme
+
+- /notifications – sistemska i korisnička obaveštenja
+
+- /profile/settings – korisnički podešavanja
+
+---
+
+3. Fatih — Aplikacija za recepte
+   Naziv: CookMaster
+   Opis: Korisnici mogu pregledati recepte, filtrirati po kategorijama, videti detalje i čuvati omiljene recepte. Takođe mogu dodati svoj recept.
+   Struktura:
+
+- /recipes – svi recepti
+
+- /recipes/category/:categoryName – recepti po kategoriji (npr. doručak)
+
+- /recipes/:recipeId – detalji recepta
+
+- /add-recipe – forma za dodavanje recepta
+
+- /favorites – omiljeni recepti
+
+- /my-recipes – recepti koje je korisnik postavio
+
+- /profile/edit – izmena korisničkog profila
+
+---
+
+4. Danel — Aplikacija za vežbanje i fitnes
+   Naziv: FitTrack
+   Opis: Aplikacija prikazuje vežbe po kategorijama, korisnik može kreirati plan treninga, pratiti napredak i unositi rezultate.
+   Struktura:
+
+- /workouts – svi treninzi
+
+- /workouts/category/:category – treninzi po grupi mišića
+
+- /workouts/:workoutId – detaljan prikaz treninga
+
+- /my-plan – plan vežbanja korisnika
+
+- /progress – grafikon napretka
+
+- /goals – postavljanje i praćenje ciljeva
+
+- /add-workout – dodavanje sopstvene rutine
+
+---
+
+5. Muhamed — Film baza sa ocenjivanjem
+   Naziv: MovieMania
+   Opis: Aplikacija za pregled i ocenjivanje filmova. Korisnici mogu ostavljati komentare i gledati ocene drugih.
+   Struktura:
+
+- /movies – svi filmovi
+
+- /movies/genre/:genre – filmovi po žanru
+
+- /movies/:movieId – detalji filma i komentari
+
+- /reviews – recenzije koje je korisnik ostavio
+
+- /top-rated – najbolje ocenjeni filmovi
+
+- /watchlist – lista za gledanje
+
+- /profile/settings – podešavanja korisnika
+
+---
+
+6. Alem — Turistički vodič kroz grad
+   Naziv: CityGuide
+   Opis: Interaktivna mapa i vodič kroz atrakcije, restorane i događaje u nekom gradu. Korisnici mogu dodavati mesta i ocenjivati ih.
+   Struktura:
+
+- /places – svi objekti
+
+- /places/category/:category – atrakcije po tipu (npr. muzeji)
+
+- /places/:placeId – detalji mesta
+
+- /map – prikaz mapa sa pinovima
+
+- /add-place – forma za dodavanje novog mesta
+
+- /events – događaji u gradu
+
+- /my-visits – mesta koja je korisnik posetio ili planira
+
+---
+
+7. Ensar — E-commerce demo sa korpom
+   Naziv: ShopEasy
+   Opis: Aplikacija sa proizvodima, detaljnim prikazima, mogućnošću dodavanja u korpu i jednostavnom kupovinom.
+   Struktura:
+
+- /products – svi proizvodi
+
+- /products/category/:category – proizvodi po kategoriji
+
+- /products/:productId – detalji proizvoda
+
+- /cart – korpa korisnika
+
+- /checkout – proces naručivanja
+
+- /orders – lista prethodnih porudžbina
+
+- /admin/products – (opciono) dodavanje proizvoda
+
+---
+
+8. Edin — Blog platforma sa korisnicima
+   Naziv: MyBlog
+   Opis: Višekorisnička blog platforma. Svaki korisnik može pisati postove, uređivati ih, komentarisati postove drugih i videti profil.
+   Struktura:
+
+- /posts – svi postovi
+
+- /posts/tag/:tag – postovi po tagovima
+
+- /posts/:postId – detalji posta + komentari
+
+- /users/:userId – korisnikov profil i postovi
+
+- /new-post – forma za pisanje posta
+
+- /my-posts – svi moji postovi
+
+- /drafts – nedovršeni postovi
+
+---
