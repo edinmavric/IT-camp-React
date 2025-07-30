@@ -1,4 +1,49 @@
-.dark {
-  background-color: black;
-  color: white;
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  padding: 16px;
+  margin: 12px 0;
+  border-left: 6px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #eee;
+  padding: 10px;
+  margin: 6px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+li:hover {
+  background: #ddd;
+}
+
+.correct {
+  background: #c8f7c5;
+}
+
+.incorrect {
+  background: #f7c5c5;
+}
+
+.result {
+  margin-top: 10px;
+  font-weight: bold;
 }
