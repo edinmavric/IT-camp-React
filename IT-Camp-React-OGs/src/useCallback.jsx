@@ -9,7 +9,7 @@ export const UseCallback = () => {
   const [dark, setDark] = useState(false);
 
   const getItems = useCallback(
-    incr => {
+    (incr = 0) => {
       return [number + incr, number + 1 + incr, number + 2 + incr];
     },
     [number]

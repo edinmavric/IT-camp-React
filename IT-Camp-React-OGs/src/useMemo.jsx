@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-// Koristi se kada imamo skupe operacije koje treba da se izvrše
-// i kada želimo da ih keširamo
-// Takođe se koristi kada želimo da keširamo vrednosti koje se često koriste
+// Koristi se kada imamo skupe operacije koje treba da se 
+// izvrše i kada želimo da ih keširamo
 
 export const UseMemo = () => {
   const [number, setNumber] = useState(0);
@@ -21,7 +19,7 @@ export const UseMemo = () => {
   }, [dark]);
 
   useEffect(() => {
-    console.log('Theme changed');
+    console.log('Theme changed!');
   }, [themeStyles]);
 
   return (
