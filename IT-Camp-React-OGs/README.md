@@ -51,8 +51,12 @@ Krajni rok za zavrsetak je 31. Avgust 2025.
 ---
 
 1. Benjamin — Aplikacija za učenje jezika
+   
    Naziv: LanguageLearner
+   
    Opis: Napravi aplikaciju za učenje jezika. Korisnik može da bira jezik (npr. engleski, nemački, turski), a zatim da vidi lekcije podeljene po temama (pozdravi, brojevi, boje...). Svaka lekcija ima reči i test kviz na kraju.
+
+
    Struktura:
 
 - /languages – lista jezika
@@ -70,8 +74,12 @@ Krajni rok za zavrsetak je 31. Avgust 2025.
 ---
 
 2. Mustafa — Studentski portal
+   
    Naziv: StudentConnect
+   
    Opis: Web aplikacija za upravljanje studentskim životom: raspored predavanja, domaći zadaci, obaveštenja i forum za pitanja.
+
+
    Struktura:
 
 - /schedule – nedeljni raspored
@@ -91,8 +99,12 @@ Krajni rok za zavrsetak je 31. Avgust 2025.
 ---
 
 3. Fatih — Aplikacija za recepte
+   
    Naziv: CookMaster
+   
    Opis: Korisnici mogu pregledati recepte, filtrirati po kategorijama, videti detalje i čuvati omiljene recepte. Takođe mogu dodati svoj recept.
+
+
    Struktura:
 
 - /recipes – svi recepti
@@ -112,8 +124,12 @@ Krajni rok za zavrsetak je 31. Avgust 2025.
 ---
 
 4. Danel — Aplikacija za vežbanje i fitnes
+   
    Naziv: FitTrack
+   
    Opis: Aplikacija prikazuje vežbe po kategorijama, korisnik može kreirati plan treninga, pratiti napredak i unositi rezultate.
+
+
    Struktura:
 
 - /workouts – svi treninzi
@@ -133,8 +149,12 @@ Krajni rok za zavrsetak je 31. Avgust 2025.
 ---
 
 5. Muhamed — Film baza sa ocenjivanjem
+   
    Naziv: MovieMania
+   
    Opis: Aplikacija za pregled i ocenjivanje filmova. Korisnici mogu ostavljati komentare i gledati ocene drugih.
+
+
    Struktura:
 
 - /movies – svi filmovi
@@ -154,8 +174,12 @@ Krajni rok za zavrsetak je 31. Avgust 2025.
 ---
 
 6. Alem — Turistički vodič kroz grad
+   
    Naziv: CityGuide
+   
    Opis: Interaktivna mapa i vodič kroz atrakcije, restorane i događaje u nekom gradu. Korisnici mogu dodavati mesta i ocenjivati ih.
+
+
    Struktura:
 
 - /places – svi objekti
@@ -175,8 +199,12 @@ Krajni rok za zavrsetak je 31. Avgust 2025.
 ---
 
 7. Ensar — E-commerce demo sa korpom
+   
    Naziv: ShopEasy
+   
    Opis: Aplikacija sa proizvodima, detaljnim prikazima, mogućnošću dodavanja u korpu i jednostavnom kupovinom.
+
+
    Struktura:
 
 - /products – svi proizvodi
@@ -196,8 +224,12 @@ Krajni rok za zavrsetak je 31. Avgust 2025.
 ---
 
 8. Edin — Blog platforma sa korisnicima
+   
    Naziv: MyBlog
+   
    Opis: Višekorisnička blog platforma. Svaki korisnik može pisati postove, uređivati ih, komentarisati postove drugih i videti profil.
+
+
    Struktura:
 
 - /posts – svi postovi
