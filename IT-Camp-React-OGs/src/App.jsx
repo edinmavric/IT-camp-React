@@ -1,13 +1,9 @@
-// import { UseMemo } from './useMemo';
-// import { UseCallback } from './useCallback';
-import QuizApp from './QuizApp';
+import AxiosGet from './AxiosGet';
 
 const App = () => {
   return (
     <>
-      {/* <UseMemo /> */}
-      {/* <UseCallback /> */}
-      <QuizApp />
+      <AxiosGet />
     </>
   );
 };
