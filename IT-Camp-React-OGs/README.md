@@ -7,6 +7,10 @@ Prikaži listu svih korisnika (link: /users)
 
 Ime svakog korisnika vodi na njegovu profil stranicu: /users/:userId
 
+Forma za dodavanje korisnika (POST)
+
+Dugme za brisanje korisnika (DELETE)
+
 ---
 
 Stranica profila korisnika /users/:userId
@@ -17,6 +21,10 @@ Ispod toga prikaži sve postove tog korisnika – naslov i kratak pregled
 
 Svaki post vodi na stranicu sa detaljima posta: /posts/:postId
 
+Forma za dodavanje postova (POST)
+
+Dugme za brisanje postova (DELETE)
+
 ---
 
 Stranica detalja posta /posts/:postId
@@ -24,6 +32,10 @@ Stranica detalja posta /posts/:postId
 Prikaži naslov i telo posta
 
 Dohvati i prikaži sve komentare za taj post (API: /comments?postId=...)
+
+Forma za dodavanje komentara (POST)
+
+Dugme za brisanje komentara (DELETE)
 
 ---
 

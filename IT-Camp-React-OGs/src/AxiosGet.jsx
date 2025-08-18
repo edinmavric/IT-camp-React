@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from './Api';
 
-const AxiosGet = () => {
+const AxiosGet = ({ refresh }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,14 @@ const AxiosGet = () => {
       .get('/posts')
       .then(response => setPosts(response.data))
       .catch(error => console.error('Error fetching data:', error));
-  }, []);
+  }, [refresh]);
+
+  const handleDelete = id => {
+    api
+      .delete(`/posts/${id}`)
+      .then(() => setPosts(posts.filter(post => post.id !== id)))
+      .catch(() => alert('Greška pri brisanju.'));
+  };
 
   return (
     <>
@@ -24,6 +31,7 @@ const AxiosGet = () => {
           <div key={post.id}>
             <h2>{post.title}</h2>
             <p>{post.body}</p>
+            <button onClick={() => handleDelete(post.id)}>Obrisi post</button>
           </div>
         ))}
       </div>
